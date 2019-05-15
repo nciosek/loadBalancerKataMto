@@ -40,6 +40,7 @@ public class ServerLoadBalancerTest {
 		assertThat("server should contain vm", theServer.contains(theVm));
 	}
 
+
 	private Vm[] aVmsListWith(Vm... vms) {
 		return vms;
 	}
