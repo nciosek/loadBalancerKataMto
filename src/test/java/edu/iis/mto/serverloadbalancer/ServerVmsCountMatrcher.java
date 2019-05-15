@@ -20,7 +20,11 @@ public class ServerVmsCountMatrcher extends TypeSafeMatcher<Server> {
         description.appendText("a server with vms count of ").appendValue(item.countVms());
     }
 
-    protected boolean matchesSafely(Server server) {
+    @Override protected boolean matchesSafely(Server server) {
         return expectedVmsCount == server.countVms();
+    }
+
+    public static ServerVmsCountMatrcher hasAVmsCountOf(int expectedVmsCount) {
+        return new ServerVmsCountMatrcher(expectedVmsCount);
     }
 }
