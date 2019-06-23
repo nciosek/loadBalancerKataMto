@@ -11,6 +11,10 @@ public class CurrentLoadPercentageMathcer extends TypeSafeMatcher<Server> {
         this.expectedLoadPercentage = expectedLoadPercentage;
     }
 
+    public static CurrentLoadPercentageMathcer hasCurrentLoadOf(double expectedLoadPercentage) {
+        return new CurrentLoadPercentageMathcer(expectedLoadPercentage);
+    }
+
     protected boolean matchesSafely(Server server) {
         return expectedLoadPercentage == server.currentLoadPercentage || Math.abs(expectedLoadPercentage - server.currentLoadPercentage) < 0.01d;
     }
