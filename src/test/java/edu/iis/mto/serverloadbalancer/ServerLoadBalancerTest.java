@@ -71,7 +71,7 @@ public class ServerLoadBalancerTest {
 
 	@Test
 	public void test6(){
-		Server theServer = a(server().withCapacity(100).withCurrentLoadOf(90.0d));
+		Server theServer = a(server().withCapacity(10).withCurrentLoadOf(90.0d));
 		Vm theVm = a(vm().ofSize(2));
 		balancing(aServersListWith(theServer), aVmsListWith(theVm));
 
