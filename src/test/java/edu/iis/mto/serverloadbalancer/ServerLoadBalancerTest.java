@@ -31,17 +31,17 @@ public class ServerLoadBalancerTest {
 		Vm theVm = a(vm().ofSize(1));
 		balancing(aServersListWith(theServer), aVmsListWith(theVm));
 
-		assertThat(theServer, hasCurrentLoadOf(100.0d));
+		assertThat(theServer, hasCurrentLoadOf(10.0d));
 		assertThat("server should contains the vm", theServer.contains(theVm));
 	}
 
 	@Test
 	public void test3(){
 		Server theServer = a(server().withCapacity(10));
-		Vm theVm = a(vm().ofSize(1));
+		Vm theVm = a(vm().ofSize(10));
 		balancing(aServersListWith(theServer), aVmsListWith(theVm));
 
-		assertThat(theServer, hasCurrentLoadOf(10.0d));
+		assertThat(theServer, hasCurrentLoadOf(100.0d));
 		assertThat("server should contains the vm", theServer.contains(theVm));
 	}
 
