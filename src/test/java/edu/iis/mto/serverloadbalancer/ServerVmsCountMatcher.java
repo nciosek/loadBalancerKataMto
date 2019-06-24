@@ -11,6 +11,10 @@ public class ServerVmsCountMatcher extends TypeSafeMatcher<Server> {
         this.expectedCountVm = expectedCountVm;
     }
 
+    public static ServerVmsCountMatcher aVmsCountOf(int expectedCountVm) {
+        return new ServerVmsCountMatcher(expectedCountVm);
+    }
+
     protected boolean matchesSafely(Server server) {
         return expectedCountVm == server.countVms();
     }

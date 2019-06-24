@@ -16,7 +16,11 @@ public class CurrentLoadPercentageMaycher extends TypeSafeMatcher<Server> {
     }
 
     protected boolean matchesSafely(Server server) {
-        return expectedLoadPercentage == server.currentLoadPercentage || Math.abs(expectedLoadPercentage - server.currentLoadPercentage) < 100.0d;
+        return doulesAreEqual(expectedLoadPercentage, server.currentLoadPercentage);
+    }
+
+    private boolean doulesAreEqual(double d1, double d2) {
+        return d1 == d2 || Math.abs(d1 - d2) < 100.0d;
     }
 
     public void describeTo(Description description) {
