@@ -12,5 +12,12 @@ public class ServerLoadBalancerTest {
 		assertThat(true, equalTo(true));
 	}
 
+	@Test
+	public void test1(){
+		Server theServer = a(server().withCapacity(1));
 
+		balancing(aServersListWith(theServer), anEmptyVmsList());
+
+		assertThat(theServer, hasCurrentLoadOf(0.0d));
+	}
 }
