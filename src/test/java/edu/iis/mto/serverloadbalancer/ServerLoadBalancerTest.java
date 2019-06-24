@@ -6,6 +6,7 @@ import static edu.iis.mto.serverloadbalancer.VmBuilder.vm;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+import org.hamcrest.Matcher;
 import org.junit.Test;
 
 public class ServerLoadBalancerTest {
@@ -43,21 +44,37 @@ public class ServerLoadBalancerTest {
 		assertThat("the server should contain vm", theServer.contains(theVm));
 		
 	}
-	
+
+	@Test
+	public void test4(){
+		Server theServer = a(server().withCapacity(10));
+		Vm theFirstVm = a(vm().ofSize(1));
+		Vm theSecondVm = a(vm().ofSize(1));
+		balance(aListOfServersWith(theServer), aListOfVmsWith(theFirstVm, theSecondVm));
+
+		assertThat(theServer, hasCountOfVm(2));
+		assertThat("the server should contain first vm", theServer.contains(theFirstVm));
+		assertThat("the server should contain second vm", theServer.contains(theSecondVm));
+	}
+
+	private Matcher<? super Server> hasCountOfVm(int expectedCountVms) {
+		return new ServerVmsCountMatcher(expectedCountVms);
+	}
+
 	private void balance(Server[] servers, Vm[] vms) {
 		new ServerLoadBalancer().balance(servers, vms);
 	}
 
-	private Vm[] aListOfVmsWith(Vm vm) {
-		return new Vm[] { vm };
+	private Vm[] aListOfVmsWith(Vm... vm) {
+		return vm;
 	}
 
 	private Vm[] anEmptyListOfVms() {
 		return new Vm[0];
 	}
 
-	private Server[] aListOfServersWith(Server server) {
-		return new Server[] { server };
+	private Server[] aListOfServersWith(Server... server) {
+		return server;
 	}
 
 	private <T> T a(Builder<T> builder) {
