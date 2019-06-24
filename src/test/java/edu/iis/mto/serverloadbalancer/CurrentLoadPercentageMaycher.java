@@ -11,6 +11,10 @@ public class CurrentLoadPercentageMaycher extends TypeSafeMatcher<Server> {
         this.expectedLoadPercentage = expectedLoadPercentage;
     }
 
+    public static CurrentLoadPercentageMaycher hasCurrentLoadOf(double expectedLoadPercentage) {
+        return new CurrentLoadPercentageMaycher(expectedLoadPercentage);
+    }
+
     protected boolean matchesSafely(Server server) {
         return expectedLoadPercentage == server.currentLoadPercentage || Math.abs(expectedLoadPercentage - server.currentLoadPercentage) < 100.0d;
     }
