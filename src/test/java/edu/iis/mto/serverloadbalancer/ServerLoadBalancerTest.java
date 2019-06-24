@@ -35,6 +35,18 @@ public class ServerLoadBalancerTest {
 
 	}
 
+	private Vm[] aVmsListWith(Vm... vms) {
+		return vms;
+	}
+
+	private Vm a(VmBuilder builder) {
+		return builder.build();
+	}
+
+	private VmBuilder vm() {
+		return new VmBuilder();
+	}
+
 	private void balancing(Server[] servers, Vm[] vms) {
 		new ServerLoadBalancer().balance(servers, vms);
 	}
