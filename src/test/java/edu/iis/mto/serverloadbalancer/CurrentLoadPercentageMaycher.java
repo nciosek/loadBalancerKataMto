@@ -22,4 +22,9 @@ public class CurrentLoadPercentageMaycher extends TypeSafeMatcher<Server> {
     public void describeTo(Description description) {
         description.appendText("server with load percentage of").appendValue(expectedLoadPercentage);
     }
+
+    @Override
+    protected void describeMismatchSafely(Server item, Description description) {
+        description.appendText("server with load percentage of").appendValue(item.currentLoadPercentage);
+    }
 }
