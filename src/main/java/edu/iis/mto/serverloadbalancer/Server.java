@@ -16,7 +16,7 @@ public class Server {
 	}
 
 	public boolean contains(Vm vm) {
-		return true;
+		return vms.contains(vm);
 	}
 
 	public void addVm(Vm vm) {
@@ -28,4 +28,9 @@ public class Server {
     public int countVms() {
         return vms.size();
     }
+
+	public boolean canFit(Vm vm) {
+		return currentLoadPecentage + ((double) vm.size / (double) this.capacity
+				* MAXIMUM_LOAD) <= MAXIMUM_LOAD;
+	}
 }
