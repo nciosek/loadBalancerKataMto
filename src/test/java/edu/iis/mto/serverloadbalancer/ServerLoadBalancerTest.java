@@ -65,10 +65,6 @@ public class ServerLoadBalancerTest {
 		return vms;
 	}
 
-	private Vm a(VmBuilder builder) {
-		return builder.build();
-	}
-
 	private void balancing(Server[] servers, Vm[] vms) {
 		new ServerLoadBalancer().balance(servers, vms);
 	}
@@ -81,8 +77,7 @@ public class ServerLoadBalancerTest {
 		return servers;
 	}
 
-	private Server a(ServerBuilder builder) {
+	private <T> T a(Builder<T> builder){
 		return builder.build();
 	}
-
 }
