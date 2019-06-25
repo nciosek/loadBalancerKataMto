@@ -9,7 +9,7 @@ public class ServerBuilder {
     }
 
     public Server build() {
-        return new Server();
+        return new Server(capacity);
     }
 
     public static ServerBuilder server() {

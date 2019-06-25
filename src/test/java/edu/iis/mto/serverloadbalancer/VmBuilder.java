@@ -9,6 +9,11 @@ public class VmBuilder {
     }
 
     public Vm build() {
-        return new Vm();
+        return new Vm(size);
     }
+
+    public static VmBuilder vm() {
+        return new VmBuilder();
+    }
+
 }

@@ -3,6 +3,7 @@ package edu.iis.mto.serverloadbalancer;
 
 import static edu.iis.mto.serverloadbalancer.CurrentLoadPercentageMatcher.hasCurrentLoadOf;
 import static edu.iis.mto.serverloadbalancer.ServerBuilder.server;
+import static edu.iis.mto.serverloadbalancer.VmBuilder.vm;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -50,10 +51,6 @@ public class ServerLoadBalancerTest {
 
 	private Vm a(VmBuilder builder) {
 		return builder.build();
-	}
-
-	private VmBuilder vm() {
-		return new VmBuilder();
 	}
 
 	private void balancing(Server[] servers, Vm[] vms) {
