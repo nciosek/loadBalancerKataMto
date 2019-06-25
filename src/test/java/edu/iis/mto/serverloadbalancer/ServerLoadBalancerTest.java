@@ -32,7 +32,6 @@ public class ServerLoadBalancerTest {
 
 		assertThat(theServer, hasCurrentLoadOf(100.0d));
 		assertThat("the server should contain the vm", theServer.contains(theVm));
-
 	}
 
 	private Vm[] aVmsListWith(Vm... vms) {
